@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MainPageActivity">
+    <!-- 这是中间的部分 -->
+    <FrameLayout
+        android:id="@+id/fragment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/page">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#65b9e1">
+                <Button
+                    android:id="@+id/btn_show"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/menu" />
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/main_img"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="550dp"
+                android:src="@drawable/bg_day"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/textright1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="道路环境："
+                        android:textColor="#000"/>
+                    <TextView
+                        android:id="@+id/textright2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11111111111111"
+                        android:textColor="#000"/>
+                    <TextView
+                        android:id="@+id/textright3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11111111111111"
+                        android:textColor="#000"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textleft1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="距一号站台距离："
+                        android:textColor="#000"/>
+                    <TextView
+                        android:id="@+id/textleft2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11111111111111"
+                        android:textColor="#000"/>
+                    <TextView
+                        android:id="@+id/textleft3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="距二号站台距离："
+                        android:textColor="#000"/>
+                    <TextView
+                        android:id="@+id/textleft4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1111111111111"
+                        android:textColor="#000"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+    <!-- 这是左侧的部分-->
+    <RelativeLayout
+        android:id="@+id/left11"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:background="@android:color/white">
+        <ListView
+            android:id="@+id/left_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ListView>
+    </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>
