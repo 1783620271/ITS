@@ -6,7 +6,6 @@ import android.os.Bundle;
 import com.acdt.cn.its.R;
 
 public class MainPageActivity extends Activity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
