@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.acdt.cn.its.R;
@@ -12,7 +13,7 @@ import com.acdt.cn.its.R;
 public class DrawerLayoutActivity extends Activity {
     DrawerLayout dl;
     Button btnShow;
-    RelativeLayout rlRight;
+    LinearLayout rlRight;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +24,7 @@ public class DrawerLayoutActivity extends Activity {
     private void initView() {
         btnShow = (Button) findViewById(R.id.btn_show);
         dl = (DrawerLayout) findViewById(R.id.drawerlayout);
-        rlRight = (RelativeLayout) findViewById(R.id.left11);
+        rlRight = (LinearLayout) findViewById(R.id.lefList);
         /*
         // 关闭手势滑动
         dl.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
