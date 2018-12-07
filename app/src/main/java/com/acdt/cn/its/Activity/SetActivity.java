@@ -5,10 +5,10 @@ import android.os.Bundle;
 
 import com.acdt.cn.its.R;
 
-public class MainPageActivity extends Activity {
+public class SetActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_page);
+        setContentView(R.layout.activity_set);
     }
 }

@@ -1,6 +1,7 @@
 package com.acdt.cn.its.Activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
@@ -14,13 +15,27 @@ public class DrawerLayoutActivity extends Activity {
     DrawerLayout dl;
     Button btnShow;
     LinearLayout rlRight;
+    private Button set;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         initView();
         initData();
+        intiSet();
     }
+
+    private void intiSet() {
+        set = (Button) findViewById(R.id.set);
+        set.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DrawerLayoutActivity.this,SetActivity.class));
+            }
+        });
+    }
+
     private void initView() {
         btnShow = (Button) findViewById(R.id.btn_show);
         dl = (DrawerLayout) findViewById(R.id.drawerlayout);
