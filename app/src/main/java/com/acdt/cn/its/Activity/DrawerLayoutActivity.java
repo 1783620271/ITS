@@ -7,9 +7,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.acdt.cn.its.R;
+import com.acdt.cn.its.Utils.ContantsValue;
+import com.acdt.cn.its.Utils.HttpUtils;
+import com.acdt.cn.its.Utils.ResolveJson;
+import com.acdt.cn.its.vo.GetAllSense;
+
+import static com.acdt.cn.its.Utils.ContantsValue.HTTP;
 
 public class DrawerLayoutActivity extends Activity {
     DrawerLayout dl;
@@ -23,7 +29,37 @@ public class DrawerLayoutActivity extends Activity {
         setContentView(R.layout.activity_main_page);
         initView();
         initData();
+        //菜单设置
         intiSet();
+        //座驾设置
+        intiMenuCar();
+        //传感器数据显示
+        intiSense();
+    }
+
+    private void intiSense() {
+        TextView textright2 = (TextView) findViewById(R.id.textright2);
+        TextView textright3 = (TextView) findViewById(R.id.textright3);
+        //获取环境数据
+        String textPM=HttpUtils.doPost(HTTP+ContantsValue.HTTPGETALLSENSE,null);
+        try {
+            GetAllSense getAllSense=ResolveJson.ResolveGetAllSense(textPM);
+            textright2.setText("PM2.5:"+getAllSense.getPm2_5()+"ug/m^3,温度:"+getAllSense.getTemp()+"摄氏度");
+            textright3.setText("湿度:"+getAllSense.getHumidity()+",CO2:"+getAllSense.getHumidity()+"ug/m^31");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void intiMenuCar() {
+        LinearLayout menu_car = (LinearLayout) findViewById(R.id.menu_car);
+        menu_car.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DrawerLayoutActivity.this,MyCarActivity.class));
+            }
+        });
     }
 
     private void intiSet() {

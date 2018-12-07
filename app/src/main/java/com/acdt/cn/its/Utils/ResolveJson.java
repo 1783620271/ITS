@@ -19,14 +19,14 @@ import java.util.List;
 /**
  * Json数据解析工具类
  */
-public class ResolveJson {
+public  class ResolveJson {
     /**
      * 查询“所有传感器”的当前值
      * @param jsonStr
      * @return
      * @throws JSONException
      */
-    public GetAllSense ResolveGetAllSense(String jsonStr) throws JSONException {
+    public static GetAllSense ResolveGetAllSense(String jsonStr) throws JSONException {
 
 
         JSONObject jsonObject = new JSONObject(jsonStr);
@@ -48,7 +48,7 @@ public class ResolveJson {
      * @return
      * @throws JSONException
      */
-    public GetLightSenseValue ResolveGetLightSenseValue(String jsonStr) throws JSONException {
+    public static GetLightSenseValue ResolveGetLightSenseValue(String jsonStr) throws JSONException {
         JSONObject jsonObject = new JSONObject(jsonStr);
         String serverinfo = jsonObject.getString("serverinfo");
         JSONObject object = new JSONObject(serverinfo);
@@ -64,7 +64,7 @@ public class ResolveJson {
      * @return
      * @throws JSONException
      */
-    public GetCarSpeed ResolveGetCatSpeed(String jsonStr) throws JSONException {
+    public static GetCarSpeed ResolveGetCatSpeed(String jsonStr) throws JSONException {
         JSONObject jsonObject = new JSONObject(jsonStr);
         String serverinfo = jsonObject.getString("serverinfo");
         JSONObject object = new JSONObject(serverinfo);
@@ -79,7 +79,7 @@ public class ResolveJson {
      * @return
      * @throws JSONException
      */
-    public String ResolveSimple(String jsonStr) throws JSONException {
+    public static String ResolveSimple(String jsonStr) throws JSONException {
         JSONObject jsonObject = new JSONObject(jsonStr);
         String serverinfo = jsonObject.getString("serverinfo");
         JSONObject object = new JSONObject(serverinfo);
@@ -93,7 +93,7 @@ public class ResolveJson {
      * @return
      * @throws JSONException
      */
-    public GetCarAccountBalance ResolveGetCarAccountBalance(String jsonStr) throws JSONException {
+    public static GetCarAccountBalance ResolveGetCarAccountBalance(String jsonStr) throws JSONException {
         JSONObject jsonObject = new JSONObject(jsonStr);
         String serverinfo = jsonObject.getString("serverinfo");
         JSONObject object = new JSONObject(serverinfo);
@@ -108,7 +108,7 @@ public class ResolveJson {
      * @return
      * @throws JSONException
      */
-    public GetRoadStatus ResolveGetRoadStatus(String jsonStr) throws JSONException {
+    public static GetRoadStatus ResolveGetRoadStatus(String jsonStr) throws JSONException {
         JSONObject jsonObject = new JSONObject(jsonStr);
         String serverinfo = jsonObject.getString("serverinfo");
         JSONObject object = new JSONObject(serverinfo);
@@ -123,7 +123,7 @@ public class ResolveJson {
      * @return
      * @throws JSONException
      */
-    public GetParkRate ResolveGetParkRate(String jsonStr) throws JSONException {
+    public static GetParkRate ResolveGetParkRate(String jsonStr) throws JSONException {
         JSONObject jsonObject = new JSONObject(jsonStr);
         String serverinfo = jsonObject.getString("serverinfo");
         JSONObject object = new JSONObject(serverinfo);
@@ -139,7 +139,7 @@ public class ResolveJson {
      * @return
      * @throws JSONException
      */
-    public GetParkFree ResolveGetParkFree(String jsonStr) throws JSONException {
+    public static GetParkFree ResolveGetParkFree(String jsonStr) throws JSONException {
         JSONObject jsonObject = new JSONObject(jsonStr);
         String serverinfo = jsonObject.getString("serverinfo");
         JSONArray jsonArray = new JSONArray(serverinfo);

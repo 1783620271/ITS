@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.SetActivity"/>
+        <activity android:name=".Activity.MyCarActivity"/>
+        <activity android:name=".Activity.QueryTopActivity"/>
     </application>
 
 </manifest>

@@ -9,7 +9,7 @@ public class GenerateJsonUtil {
      * @param CarId
      * @return
      */
-    public String GenerateSimple(Integer CarId){
+    public static String GenerateSimple(Integer CarId){
         String jsonStr="{\"CarId\":"+CarId+"}";
         return jsonStr;
     }
@@ -20,7 +20,7 @@ public class GenerateJsonUtil {
      * @param CarAction
      * @return
      */
-    public String GenerateSetCarMove(Integer CarId,String CarAction){
+    public static String GenerateSetCarMove(Integer CarId,String CarAction){
         String jsonStr="{\"CarId\":"+CarId+",\"CarAction\":\""+CarAction+"\"}";
         return jsonStr;
     }

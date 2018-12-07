@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/MyCarblack1"
+            android:background="@drawable/returnactivity"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp" />
+        <TextView
+            android:textColor="#38adce"
+            android:textSize="50sp"
+            android:background="#8ec9e1"
+            android:gravity="center"
+            android:text="我的座驾"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="400dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_marginLeft="100dp"
+                android:layout_gravity="center"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:src="@drawable/mycar"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_marginTop="130dp"
+                android:textSize="40sp"
+                android:text="小车账户查询:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="35sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车辆ID:"/>
+                <EditText
+                    android:id="@+id/MyCarQuerySerial"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="35sp"
+                    android:hint="1"
+                    android:background="@drawable/serialnumber"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp" />
+                <Button
+                    android:id="@+id/MyCarQery"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/query"/>
+            </LinearLayout>
+            <TextView
+                android:layout_marginTop="130dp"
+                android:textSize="40sp"
+                android:text="小车账户充值:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="35sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车辆ID:"/>
+                <EditText
+                    android:id="@+id/MyCarTopUpSerial"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="35sp"
+                    android:hint="1"
+                    android:background="@drawable/serialnumber"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp" />
+                <EditText
+                    android:id="@+id/MyCarTopUpMoney"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="35sp"
+                    android:hint="1"
+                    android:background="@drawable/mycartopup"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp" />
+                <Button
+                    android:id="@+id/MyCarTopUp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/topup"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
