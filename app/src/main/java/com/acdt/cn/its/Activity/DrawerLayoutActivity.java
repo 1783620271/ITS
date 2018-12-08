@@ -52,6 +52,8 @@ public class DrawerLayoutActivity extends Activity {
     int number=1;
     private Timer timer;
     private TimerTask task;
+    private LinearLayout menu_park;
+    private LinearLayout menu_bus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,11 @@ public class DrawerLayoutActivity extends Activity {
         //座驾设置
         intiMenuCar();
         //传感器数据显示
+        //停车查询
+        intiPark();
+        //公交查询
+        intibus();
+
         intiSense();
         //定时刷新
         timer = new Timer();
@@ -78,7 +85,26 @@ public class DrawerLayoutActivity extends Activity {
         timer.schedule(task,5000);
     }
 
-    
+    private void intibus() {
+        menu_bus = (LinearLayout) findViewById(R.id.menu_bus);
+        menu_bus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DrawerLayoutActivity.this,QuertBusActivity.class));
+            }
+        });
+    }
+
+    private void intiPark() {
+        menu_park = (LinearLayout) findViewById(R.id.menu_park);
+        menu_park.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(new Intent(DrawerLayoutActivity.this,ParkQeryActivity.class)));
+            }
+        });
+    }
+
 
     private void intiSense() {
         textright2 = (TextView) findViewById(R.id.textright2);

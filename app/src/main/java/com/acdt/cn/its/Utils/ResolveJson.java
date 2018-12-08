@@ -1,6 +1,10 @@
 package com.acdt.cn.its.Utils;
 
+import android.util.Log;
+
+import com.acdt.cn.its.vo.BusStation;
 import com.acdt.cn.its.vo.GetAllSense;
+import com.acdt.cn.its.vo.GetBusStation;
 import com.acdt.cn.its.vo.GetCarAccountBalance;
 import com.acdt.cn.its.vo.GetCarSpeed;
 import com.acdt.cn.its.vo.GetLightSenseValue;
@@ -15,6 +19,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.support.constraint.Constraints.TAG;
 
 /**
  * Json数据解析工具类
@@ -139,7 +145,7 @@ public  class ResolveJson {
         String serverinfo = jsonObject.getString("serverinfo");
         JSONObject object = new JSONObject(serverinfo);
         GetParkRate getParkRate = new GetParkRate();
-        getParkRate.setRateType(object.getString("Count"));
+        getParkRate.setRateType(object.getString("RateType"));
         getParkRate.setMoney(object.getInt("Money"));
         return getParkRate;
     }
@@ -164,5 +170,27 @@ public  class ResolveJson {
         getParkFree.setParkFreeIdLit(parkFreeIdList);
         return getParkFree;
     }
-
+    /**
+     * 获取到站台的距离
+     */
+    public static GetBusStation ResolveGetBusStation(String jsonStr) throws JSONException {
+        //Log.i(TAG, "ResolveGetBusStation: "+11111111);
+        JSONObject jsonObject = new JSONObject(jsonStr);
+        String serverinfo = jsonObject.getString("serverinfo");
+        JSONArray jsonArray = new JSONArray(serverinfo);
+        GetBusStation getBusStation=new GetBusStation();
+        List<BusStation> BusTionList=new ArrayList<BusStation>();
+        for (int i = 0; i < jsonArray.length(); i++) {
+           // Log.i(TAG, "ResolveGetBusStation: "+2222222);
+            BusStation busStation = new BusStation();
+            busStation.setBusId(jsonArray.getJSONObject(i).getInt("BusId"));
+           // Log.i(TAG, "ResolveGetBusStation: "+jsonArray.getJSONObject(i).getInt("BusId"));
+           busStation.setDistance(jsonArray.getJSONObject(i).getInt("Distance"));
+            //Log.i(TAG, "ResolveGetBusStation: "+jsonArray.getJSONObject(i).getInt("Distance"));
+            BusTionList.add(busStation);
+        }
+        getBusStation.setBusTionList(BusTionList);
+      //  Log.i(TAG, "ResolveGetBusStation: 111"+getBusStation.getBusTionList().get(0).toString());
+        return getBusStation;
+    }
 }

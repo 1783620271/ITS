@@ -19,6 +19,8 @@
         <activity android:name=".Activity.SetActivity"/>
         <activity android:name=".Activity.MyCarActivity"/>
         <activity android:name=".Activity.QueryTopActivity"/>
+        <activity android:name=".Activity.ParkQeryActivity"/>
+        <activity android:name=".Activity.QuertBusActivity"/>
     </application>
 
 </manifest>

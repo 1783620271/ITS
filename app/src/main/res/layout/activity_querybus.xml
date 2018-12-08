@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pageimg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/MyCarblack"
+            android:background="@drawable/returnactivity"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp" />
+        <TextView
+            android:id="@+id/actionName"
+            android:textColor="#000"
+            android:textSize="50sp"
+            android:background="#8ec9e1"
+            android:gravity="center"
+            android:text="1号站台"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:padding="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/busDistance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:text="距一号站台距离："/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/Distancebus1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:text="1号公交："/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/Distancebus2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:text="2号公交：："/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:text="候车环境："/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/envment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:text="pm2.5：50，温度：20，湿度：12，co2：设置"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/busButton1"
+            android:textColor="#fff"
+            android:textSize="35sp"
+            android:text="1号站台"
+            android:gravity="center"
+            android:background="@drawable/bus_button1"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/busButton2"
+            android:textColor="#fff"
+            android:textSize="35sp"
+            android:text="2号站台"
+            android:gravity="center"
+            android:background="@drawable/bus_button2"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</LinearLayout>

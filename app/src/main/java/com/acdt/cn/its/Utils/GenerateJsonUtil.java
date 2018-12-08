@@ -41,7 +41,7 @@ public class GenerateJsonUtil {
      * @param RoadId
      * @return
      */
-    public String GenerateGetRoadStatus(Integer RoadId){
+    public static String GenerateGetRoadStatus(Integer RoadId){
         String jsonStr="{\"RoadId\":"+RoadId+"}";
         return jsonStr;
     }
@@ -52,8 +52,15 @@ public class GenerateJsonUtil {
      * @param Money
      * @return
      */
-    public String GenerateSetParkRate(String RateType,Integer Money){
+    public static String GenerateSetParkRate(String RateType, Integer Money){
         String jsonStr="{\"RateType\":"+RateType+",\"Money\":"+Money+"}";
+        return jsonStr;
+    }
+    /**
+     * 站台
+     */
+    public static String GenerateGetBusStationinfo(String BusStationId){
+        String jsonStr="{\"BusStationId\":"+BusStationId+"}";
         return jsonStr;
     }
 }

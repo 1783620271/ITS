@@ -15,6 +15,7 @@ public  class ContantsValue {
     public static final String HTTPSETPARKRATE = "SetParkRate.do";
     public static final String HTTPGETPARKRATE = "GetParkRate.do";
     public static final String HTTPGETPARKFREE = "GetParkFree.do";
+    public static final String HTTPGETBUSSTATIONINFO = "GetBusStationInfo.do";
 
     public static final String IPADDRESS = "ipaddress";
 }
