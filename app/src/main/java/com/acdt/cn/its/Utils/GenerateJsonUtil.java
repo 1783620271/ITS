@@ -31,8 +31,8 @@ public class GenerateJsonUtil {
      * @param Money
      * @return
      */
-    public String GenerateSetCarAccountRecharge(Integer CarId,Integer Money){
-        String jsonStr="{\"CarId\":"+CarId+",\"CarAction\":"+Money+"}";
+    public static String GenerateSetCarAccountRecharge(Integer CarId, Integer Money){
+        String jsonStr="{\"CarId\":"+CarId+",\"Money\":"+Money+"}";
         return jsonStr;
     }
 

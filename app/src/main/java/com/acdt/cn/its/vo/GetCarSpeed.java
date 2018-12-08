@@ -10,4 +10,11 @@ public class GetCarSpeed {
     public void setCarSpeed(Integer carSpeed) {
         CarSpeed = carSpeed;
     }
+
+    @Override
+    public String toString() {
+        return "GetCarSpeed{" +
+                "CarSpeed=" + CarSpeed +
+                '}';
+    }
 }

@@ -10,4 +10,11 @@ public class GetRoadStatus {
     public void setStatus(Integer status) {
         Status = status;
     }
+
+    @Override
+    public String toString() {
+        return "GetRoadStatus{" +
+                "Status=" + Status +
+                '}';
+    }
 }

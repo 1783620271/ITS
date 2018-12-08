@@ -10,4 +10,11 @@ public class GetCarAccountBalance {
     public void setBanlance(Integer banlance) {
         Banlance = banlance;
     }
+
+    @Override
+    public String toString() {
+        return "GetCarAccountBalance{" +
+                "Banlance=" + Banlance +
+                '}';
+    }
 }

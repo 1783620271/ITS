@@ -19,4 +19,12 @@ public class GetParkRate {
     public void setMoney(Integer money) {
         Money = money;
     }
+
+    @Override
+    public String toString() {
+        return "GetParkRate{" +
+                "RateType='" + RateType + '\'' +
+                ", Money=" + Money +
+                '}';
+    }
 }

@@ -1,5 +1,7 @@
 package com.acdt.cn.its.Utils;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -8,6 +10,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Http请求的工具类
@@ -98,10 +102,10 @@ public class HttpUtils {
         PrintWriter printWriter = null;
         BufferedReader bufferedReader = null;
         String result = "";
+
         try {
             URL realUrl = new URL(url);
-            HttpURLConnection conn = (HttpURLConnection) realUrl
-                    .openConnection();
+            HttpURLConnection conn = (HttpURLConnection) realUrl.openConnection();
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setRequestProperty("charset", "utf-8");
             conn.setRequestMethod("POST");
@@ -115,6 +119,7 @@ public class HttpUtils {
                 printWriter.print(param);
                 printWriter.flush();
             }
+           // Log.i(TAG, "doPost: "+111222);
             bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line;
             while ((line = bufferedReader.readLine()) != null) {

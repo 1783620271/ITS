@@ -47,4 +47,15 @@ public class GetAllSense {
     public void setHumidity(Integer humidity) {
         this.humidity = humidity;
     }
+
+    @Override
+    public String toString() {
+        return "GetAllSense{" +
+                "pm2_5=" + pm2_5 +
+                ", co2=" + co2 +
+                ", temp=" + temp +
+                ", LightIntensity=" + LightIntensity +
+                ", humidity=" + humidity +
+                '}';
+    }
 }

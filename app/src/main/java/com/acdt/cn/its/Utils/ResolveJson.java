@@ -22,21 +22,32 @@ import java.util.List;
 public  class ResolveJson {
     /**
      * 查询“所有传感器”的当前值
-     * @param jsonStr
+     * @param in
      * @return
      * @throws JSONException
      */
+    //json数据转换编码
+    public static String JSONTokener(String in) {
+        // consume an optional byte order mark (BOM) if it exists
+        if (in != null && in.startsWith("\ufeff")) {
+            in = in.substring(1);
+        }
+        return in;
+    }
+
     public static GetAllSense ResolveGetAllSense(String jsonStr) throws JSONException {
 
-
-        JSONObject jsonObject = new JSONObject(jsonStr);
-
+        //json数据转换编码
+        String tokener = JSONTokener(jsonStr);
+        JSONObject jsonObject;
+        GetAllSense getAllSense =null;
+        jsonObject = new JSONObject(tokener);
         String serverinfo = jsonObject.getString("serverinfo");
         JSONObject object = new JSONObject(serverinfo);
-        GetAllSense getAllSense = new GetAllSense();
+        getAllSense = new GetAllSense();
         getAllSense.setPm2_5(object.getInt("pm2.5"));
         getAllSense.setCo2(object.getInt("co2"));
-        getAllSense.setTemp(object.getInt("temp"));
+        getAllSense.setTemp(object.getInt("temperature"));
         getAllSense.setLightIntensity(object.getInt("LightIntensity"));
         getAllSense.setHumidity(object.getInt("humidity"));
         return getAllSense;
@@ -98,7 +109,7 @@ public  class ResolveJson {
         String serverinfo = jsonObject.getString("serverinfo");
         JSONObject object = new JSONObject(serverinfo);
         GetCarAccountBalance getCarAccountBalance = new GetCarAccountBalance();
-        getCarAccountBalance.setBanlance(object.getInt("Banlance"));
+        getCarAccountBalance.setBanlance(object.getInt("Balance"));
         return getCarAccountBalance;
     }
 

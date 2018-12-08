@@ -19,4 +19,12 @@ public class GetLightSenseValue {
     public void setUp(String up) {
         Up = up;
     }
+
+    @Override
+    public String toString() {
+        return "GetLightSenseValue{" +
+                "Down='" + Down + '\'' +
+                ", Up='" + Up + '\'' +
+                '}';
+    }
 }

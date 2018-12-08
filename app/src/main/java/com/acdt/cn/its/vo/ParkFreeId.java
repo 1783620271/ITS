@@ -10,4 +10,11 @@ public class ParkFreeId {
     public void setParkFreeId(Integer parkFreeId) {
         ParkFreeId = parkFreeId;
     }
+
+    @Override
+    public String toString() {
+        return "ParkFreeId{" +
+                "ParkFreeId=" + ParkFreeId +
+                '}';
+    }
 }

@@ -13,4 +13,11 @@ public class GetParkFree {
     }
 
     private List<ParkFreeId> ParkFreeIdLit;
+
+    @Override
+    public String toString() {
+        return "GetParkFree{" +
+                "ParkFreeIdLit=" + ParkFreeIdLit +
+                '}';
+    }
 }
