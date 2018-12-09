@@ -1,10 +1,12 @@
 package com.acdt.cn.its.Activity;
 
 import android.app.Activity;
+import android.app.Instrumentation;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -54,6 +56,7 @@ public class QuertBusActivity extends Activity {
     private GetBusStation busTionList;
     private Button busButton2;
     private GetBusStation busTionList1;
+    private Button MyCarblack1;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -81,6 +84,25 @@ public class QuertBusActivity extends Activity {
                 busDistance.setText("距二号站台距离：");
                 intiDistance1();
             }
+        });
+        MyCarblack1 = (Button) findViewById(R.id.MyCarblack1);
+        //点击按钮返回事件（物理返回）
+        MyCarblack1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                new Thread() {
+                    public void run() {
+                        try {
+                            Instrumentation inst = new Instrumentation();
+                            inst.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+                        } catch (Exception e) {
+
+                        }
+                    }
+                }.start();
+            }
+
         });
     }
 

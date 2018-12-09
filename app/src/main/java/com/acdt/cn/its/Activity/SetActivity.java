@@ -51,6 +51,7 @@ public class SetActivity extends Activity {
                     Toast.makeText(SetActivity.this, "IP地址更改成功", Toast.LENGTH_SHORT).show();
                     SpUtils.putString(SetActivity.this,ContantsValue.IPADDRESS,IP1);
 
+
                 }else{
                     Toast.makeText(SetActivity.this, "IP地址更改失败", Toast.LENGTH_SHORT).show();
                 }

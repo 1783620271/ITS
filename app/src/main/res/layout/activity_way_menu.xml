@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pageimg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/MyCarblack3"
+            android:background="@drawable/returnactivity"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp" />
+        <TextView
+            android:id="@+id/actionName"
+            android:textColor="#000"
+            android:textSize="50sp"
+            android:background="#8ec9e1"
+            android:gravity="center"
+            android:text="道路环境"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:textSize="40sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="空气环境："/>
+
+        <Button
+            android:id="@+id/sgay"
+            android:layout_marginLeft="600dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/topup"/>
+    </LinearLayout>
+    <TextView
+        android:layout_marginLeft="150dp"
+        android:id="@+id/huanjing1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"/>
+    <LinearLayout
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:textSize="40sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="空气环境："/>
+        <Button
+            android:id="@+id/guang"
+            android:layout_marginLeft="600dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/topup"/>
+    </LinearLayout>
+    <TextView
+        android:layout_marginLeft="150dp"
+        android:id="@+id/huanjing2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"/>
+</LinearLayout>

@@ -11,12 +11,14 @@ import com.acdt.cn.its.vo.GetLightSenseValue;
 import com.acdt.cn.its.vo.GetParkFree;
 import com.acdt.cn.its.vo.GetParkRate;
 import com.acdt.cn.its.vo.GetRoadStatus;
+import com.acdt.cn.its.vo.GetTrafficLight;
 import com.acdt.cn.its.vo.ParkFreeId;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -192,5 +194,18 @@ public  class ResolveJson {
         getBusStation.setBusTionList(BusTionList);
       //  Log.i(TAG, "ResolveGetBusStation: 111"+getBusStation.getBusTionList().get(0).toString());
         return getBusStation;
+    }
+    /**
+     * 获取红绿灯数据
+     */
+    public static GetTrafficLight ResovleTrafficLight(String jsonstr) throws JSONException{
+        JSONObject jsonObject = new JSONObject(jsonstr);
+        String serverinfo = jsonObject.getString("serverinfo");
+            JSONObject object=new JSONObject(serverinfo);
+        GetTrafficLight getTrafficLight=new GetTrafficLight();
+        getTrafficLight.setGreenTime(object.getInt("GreenTime"));
+        getTrafficLight.setRedTime(object.getInt("RedTime"));
+        getTrafficLight.setYellowTime(object.getInt("YellowTime"));
+        return getTrafficLight;
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.constraint.Constraints;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.View;
@@ -14,11 +15,17 @@ import android.widget.TextView;
 
 import com.acdt.cn.its.R;
 import com.acdt.cn.its.Utils.ContantsValue;
+import com.acdt.cn.its.Utils.GenerateJsonUtil;
 import com.acdt.cn.its.Utils.HttpUtils;
 import com.acdt.cn.its.Utils.NetworkUtil;
 import com.acdt.cn.its.Utils.ResolveJson;
 import com.acdt.cn.its.Utils.SpUtils;
+import com.acdt.cn.its.vo.BusStation;
 import com.acdt.cn.its.vo.GetAllSense;
+import com.acdt.cn.its.vo.GetBusStation;
+import com.acdt.cn.its.vo.GetLightSenseValue;
+
+import org.json.JSONException;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,6 +36,8 @@ import static com.acdt.cn.its.Utils.ContantsValue.HTTPGETALLSENSE;
 
 public class DrawerLayoutActivity extends Activity {
     private static final int NUMBER1 = 101;
+    private static final int DICTANCE = 102;
+    private static final int DICTANCE1 = 103;
     DrawerLayout dl;
     Button btnShow;
     LinearLayout rlRight;
@@ -43,6 +52,18 @@ public class DrawerLayoutActivity extends Activity {
                     textright2.setText("PM2.5:"+ getAllSense.getPm2_5()+"ug/m^3,温度:"+ getAllSense.getTemp()+"摄氏度");
                     textright3.setText("湿度:"+ getAllSense.getHumidity()+",CO2:"+ getAllSense.getHumidity()+"ug/m^31");
                     break;
+                case  DICTANCE:
+                    BusStation busStation=busTionList.getBusTionList().get(0);
+                    textleft2.setText("1号公交："+busStation.getDistance());
+                    BusStation busStation1=busTionList.getBusTionList().get(1);
+                    textleft4.setText("2号公交："+busStation1.getDistance());
+                    break;
+                case  DICTANCE1:
+                    BusStation busStatio= busTionList1.getBusTionList().get(0);
+                    textleft2.setText("1号公交："+busStatio.getDistance());
+                    BusStation busStati=busTionList.getBusTionList().get(1);
+                    textleft4.setText("2号公交："+busStati.getDistance());
+                    break;
             }
             super.handleMessage(msg);
         }
@@ -54,6 +75,14 @@ public class DrawerLayoutActivity extends Activity {
     private TimerTask task;
     private LinearLayout menu_park;
     private LinearLayout menu_bus;
+    private LinearLayout menu_way;
+    private LinearLayout menu_road;
+    private GetLightSenseValue getLightSenseValue;
+    private TextView textleft2;
+    private TextView textleft4;
+    private GetBusStation busTionList;
+    private TextView textleft3;
+    private GetBusStation busTionList1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +99,12 @@ public class DrawerLayoutActivity extends Activity {
         //传感器数据显示
         //停车查询
         intiPark();
+        //我的路况
+        intilukuang();
         //公交查询
         intibus();
-
+        //道路环境
+        intimenuway();
         intiSense();
         //定时刷新
         timer = new Timer();
@@ -83,6 +115,27 @@ public class DrawerLayoutActivity extends Activity {
             }
         };
         timer.schedule(task,5000);
+    }
+
+    private void intilukuang() {
+        menu_road = (LinearLayout) findViewById(R.id.menu_road);
+        menu_road.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DrawerLayoutActivity.this,LuKuangActivity.class));
+            }
+        });
+
+    }
+
+    private void intimenuway() {
+        menu_way = (LinearLayout) findViewById(R.id.menu_way);
+        menu_way.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DrawerLayoutActivity.this,WayMenuActivity.class));
+            }
+        });
     }
 
     private void intibus() {
@@ -109,6 +162,8 @@ public class DrawerLayoutActivity extends Activity {
     private void intiSense() {
         textright2 = (TextView) findViewById(R.id.textright2);
         textright3 = (TextView) findViewById(R.id.textright3);
+        textleft2 = (TextView) findViewById(R.id.textleft2);
+        textleft4 = (TextView) findViewById(R.id.textleft4);
         new Thread(){
             @Override
             public void run() {
@@ -123,6 +178,44 @@ public class DrawerLayoutActivity extends Activity {
                     msg.what=NUMBER1;
                     handler.sendMessage(msg);
                 } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                super.run();
+            }
+        }.start();
+        //l号站台距离
+        new Thread(){
+            @Override
+            public void run() {
+                String stationinfo = GenerateJsonUtil.GenerateGetBusStationinfo("1");
+                String doPost = HttpUtils.doPost(ContantsValue.HTTP + ContantsValue.HTTPGETBUSSTATIONINFO, stationinfo);
+               // Log.i(Constraints.TAG, "run: "+doPost);
+                try {
+                    busTionList = ResolveJson.ResolveGetBusStation(doPost);
+                    Message msg=new Message();
+                    msg.what=DICTANCE;
+                    handler.sendMessage(msg);
+                    // Log.i(TAG, "run: "+getBusStation.getBusTionList().get(0));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                super.run();
+            }
+        }.start();
+        //2号站台
+        new Thread(){
+            @Override
+            public void run() {
+                String stationinfo = GenerateJsonUtil.GenerateGetBusStationinfo("2");
+                String doPost = HttpUtils.doPost(ContantsValue.HTTP + ContantsValue.HTTPGETBUSSTATIONINFO, stationinfo);
+                // Log.i(TAG, "run: "+doPost);
+                try {
+                    busTionList1 = ResolveJson.ResolveGetBusStation(doPost);
+                    Message msg=new Message();
+                    msg.what=DICTANCE1;
+                    handler.sendMessage(msg);
+                    // Log.i(TAG, "run: "+getBusStation.getBusTionList().get(0));
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 super.run();
