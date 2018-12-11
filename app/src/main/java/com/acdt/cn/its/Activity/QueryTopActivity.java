@@ -32,6 +32,7 @@ public class QueryTopActivity extends Activity {
 
     private static final int NUMBER = 101;
     private static final int MONEY = 102;
+    private static final int NUMBERQ = 103;
     private EditText MyCarQuerySerial;
     private Button MyCarQery;
     private EditText MyCarTopUpSerial;
@@ -51,6 +52,9 @@ Handler handler=new Handler(){
                 }else {
                     Toast.makeText(QueryTopActivity.this, "充值失败", Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case NUMBERQ:
+                Toast.makeText(QueryTopActivity.this, "你的输入有误，请重新输入", Toast.LENGTH_SHORT).show();
                 break;
         }
         super.handleMessage(msg);
@@ -97,15 +101,24 @@ Handler handler=new Handler(){
             @Override
             public void onClick(View v) {
                 //根据小车id查询小车账户信息
-
-                intiAccount();
+                if(MyCarQuerySerial.getText().toString().matches("([1-9]\\d+)|[2-9] ")&&MyCarQuerySerial!=null){
+                    intiAccount();
+                }else {
+                    Toast.makeText(QueryTopActivity.this, "你的输入有误,请重试", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         MyCarTopUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //根据小车id进行充值
-                dialog(Integer.parseInt(MyCarTopUpSerial.getText().toString()),MyCarTopUpMoney.getText().toString());
+                if(MyCarTopUpSerial!=null&&MyCarTopUpSerial.getText().toString().matches("([1-9]\\d+)|[2-9] ")&&
+                        MyCarTopUpMoney.getText().toString().matches("([1-9]\\d+)|[2-9] ")&&
+                        MyCarTopUpMoney.getText()!=null){
+                    dialog(Integer.parseInt(MyCarTopUpSerial.getText().toString()),MyCarTopUpMoney.getText().toString());
+                }else {
+                    Toast.makeText(QueryTopActivity.this, "你的输入有误,请重试", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -163,12 +176,21 @@ Handler handler=new Handler(){
     }
 
     private void intiAccount() {
+
         new Thread(){
             @Override
             public void run() {
                 //发送请求
 
-                int number=Integer.parseInt(MyCarQuerySerial.getText().toString());
+                int arr=Integer.parseInt(MyCarQuerySerial.getText().toString());
+                int number=0;
+                if(arr>0&&arr<10){
+                    number = arr;
+                }else{
+                    Message msg=new Message();
+                    msg.what=NUMBERQ;
+                    handler.sendMessage(msg);
+                }
 
                 String simple = GenerateJsonUtil.GenerateSimple(number);
                 String doPost = HttpUtils.doPost(ContantsValue.HTTP + ContantsValue.HTTPGETCARACCOUNTBALANCE, simple);

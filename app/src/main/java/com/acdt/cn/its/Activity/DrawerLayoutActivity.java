@@ -54,15 +54,13 @@ public class DrawerLayoutActivity extends Activity {
                     break;
                 case  DICTANCE:
                     BusStation busStation=busTionList.getBusTionList().get(0);
-                    textleft2.setText("1号公交："+busStation.getDistance());
                     BusStation busStation1=busTionList.getBusTionList().get(1);
-                    textleft4.setText("2号公交："+busStation1.getDistance());
+                    textleft2.setText("1号公交："+busStation.getDistance()+"2号公交："+busStation1.getDistance());
                     break;
                 case  DICTANCE1:
                     BusStation busStatio= busTionList1.getBusTionList().get(0);
-                    textleft2.setText("1号公交："+busStatio.getDistance());
-                    BusStation busStati=busTionList.getBusTionList().get(1);
-                    textleft4.setText("2号公交："+busStati.getDistance());
+                    BusStation busStati=busTionList1.getBusTionList().get(1);
+                    textleft4.setText("1号公交："+busStatio.getDistance()+"2号公交："+busStati.getDistance());
                     break;
             }
             super.handleMessage(msg);
@@ -88,9 +86,11 @@ public class DrawerLayoutActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-        ContantsValue.IP=SpUtils.getString(DrawerLayoutActivity.this,ContantsValue.IPADDRESS,"");
+        ContantsValue.setIP(SpUtils.getString(getApplicationContext(),ContantsValue.IPADDRESS,""));
         //Log.i(TAG, "onCreate: "+ContantsValue.IP);
         initView();
+        //定时刷新
+        intiTime();
         initData();
         //菜单设置
         intiSet();
@@ -105,16 +105,17 @@ public class DrawerLayoutActivity extends Activity {
         intibus();
         //道路环境
         intimenuway();
-        intiSense();
-        //定时刷新
+    }
+
+    private void intiTime() {
         timer = new Timer();
         task = new TimerTask() {
             @Override
             public void run() {
-                startActivity(new Intent(DrawerLayoutActivity.this, DrawerLayoutActivity.class));
+                intiSense();
             }
         };
-        timer.schedule(task,5000);
+        timer.schedule(task,0,5000);
     }
 
     private void intilukuang() {
@@ -123,6 +124,7 @@ public class DrawerLayoutActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(DrawerLayoutActivity.this,LuKuangActivity.class));
+
             }
         });
 
@@ -159,16 +161,11 @@ public class DrawerLayoutActivity extends Activity {
     }
 
 
+    /**
+     * 获取数据
+     */
     private void intiSense() {
-        textright2 = (TextView) findViewById(R.id.textright2);
-        textright3 = (TextView) findViewById(R.id.textright3);
-        textleft2 = (TextView) findViewById(R.id.textleft2);
-        textleft4 = (TextView) findViewById(R.id.textleft4);
-        new Thread(){
-            @Override
-            public void run() {
                 //获取环境数据
-
                 try {
                     String textPM=HttpUtils.doPost(HTTP+HTTPGETALLSENSE,null);
                    // Log.i(TAG, "run: "+textPM);
@@ -180,32 +177,6 @@ public class DrawerLayoutActivity extends Activity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                super.run();
-            }
-        }.start();
-        //l号站台距离
-        new Thread(){
-            @Override
-            public void run() {
-                String stationinfo = GenerateJsonUtil.GenerateGetBusStationinfo("1");
-                String doPost = HttpUtils.doPost(ContantsValue.HTTP + ContantsValue.HTTPGETBUSSTATIONINFO, stationinfo);
-               // Log.i(Constraints.TAG, "run: "+doPost);
-                try {
-                    busTionList = ResolveJson.ResolveGetBusStation(doPost);
-                    Message msg=new Message();
-                    msg.what=DICTANCE;
-                    handler.sendMessage(msg);
-                    // Log.i(TAG, "run: "+getBusStation.getBusTionList().get(0));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                super.run();
-            }
-        }.start();
-        //2号站台
-        new Thread(){
-            @Override
-            public void run() {
                 String stationinfo = GenerateJsonUtil.GenerateGetBusStationinfo("2");
                 String doPost = HttpUtils.doPost(ContantsValue.HTTP + ContantsValue.HTTPGETBUSSTATIONINFO, stationinfo);
                 // Log.i(TAG, "run: "+doPost);
@@ -218,10 +189,19 @@ public class DrawerLayoutActivity extends Activity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                super.run();
-            }
-        }.start();
-
+                String stationinfo1 = GenerateJsonUtil.GenerateGetBusStationinfo("1");
+                String doPost2 = HttpUtils.doPost(ContantsValue.HTTP + ContantsValue.HTTPGETBUSSTATIONINFO, stationinfo1);
+                // Log.i(Constraints.TAG, "run: "+doPost);
+                try {
+                    busTionList = ResolveJson.ResolveGetBusStation(doPost2);
+                    Message msg=new Message();
+                    msg.what=DICTANCE;
+                    handler.sendMessage(msg);
+                    // Log.i(TAG, "run: "+getBusStation.getBusTionList().get(0));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+        //l号站台距离
     }
 
     private void intiMenuCar() {
@@ -248,6 +228,10 @@ public class DrawerLayoutActivity extends Activity {
         btnShow = (Button) findViewById(R.id.btn_show);
         dl = (DrawerLayout) findViewById(R.id.drawerlayout);
         rlRight = (LinearLayout) findViewById(R.id.lefList);
+        textright2 = (TextView) findViewById(R.id.textright2);
+        textright3 = (TextView) findViewById(R.id.textright3);
+        textleft2 = (TextView) findViewById(R.id.textleft2);
+        textleft4 = (TextView) findViewById(R.id.textleft4);
         /*
         // 关闭手势滑动
         dl.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
@@ -274,15 +258,9 @@ public class DrawerLayoutActivity extends Activity {
             @Override
             public void onClick(View view) {
                 // TODO 点击按钮打开侧滑菜单
-                timer.cancel();
-                timer = null;
-                task.cancel();
-                task = null;
                 dl.openDrawer(rlRight);
-
             }
 
         });
-
     }
 }

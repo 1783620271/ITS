@@ -32,7 +32,10 @@ public class SetActivity extends Activity {
         IPthree = (EditText) findViewById(R.id.IPthree);
         IPfour = (EditText) findViewById(R.id.IPfour);
         //获取IP地址进行拆分
-        String[] strings=ContantsValue.IP.split("\\.");
+        String[] strings=new String[5];
+        String ip=ContantsValue.getIP();
+       // Log.i(TAG, "onCreatekjjj: "+ip);
+        strings=ip.split("\\.");
             IPone.setText(strings[0]);
             IPtwo.setText(strings[1]);
             IPthree.setText(strings[2]);
@@ -50,8 +53,6 @@ public class SetActivity extends Activity {
                 if(IP1.matches("((2[0-4]\\d|25[0-5]|[01]?\\d\\d?)\\.){3}(2[0-4]\\d|25[0-5]|[01]?\\d\\d?)")){
                     Toast.makeText(SetActivity.this, "IP地址更改成功", Toast.LENGTH_SHORT).show();
                     SpUtils.putString(SetActivity.this,ContantsValue.IPADDRESS,IP1);
-
-
                 }else{
                     Toast.makeText(SetActivity.this, "IP地址更改失败", Toast.LENGTH_SHORT).show();
                 }

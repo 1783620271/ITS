@@ -87,7 +87,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
             <TextView
-                android:text="5"
                 android:id="@+id/arr1"
                 android:gravity="center"
                 android:textSize="35sp"
@@ -95,7 +94,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
             <TextView
-                android:text="5"
                 android:id="@+id/arr2"
                 android:gravity="center"
                 android:textSize="35sp"
@@ -103,7 +101,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
             <TextView
-                android:text="5"
                 android:id="@+id/arr3"
                 android:gravity="center"
                 android:textSize="35sp"
@@ -124,7 +121,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
             <TextView
-                android:text="5"
                 android:id="@+id/arr4"
                 android:gravity="center"
                 android:textSize="35sp"
@@ -134,7 +130,6 @@
             <TextView
                 android:id="@+id/arr5"
                 android:gravity="center"
-                android:text="5"
                 android:textSize="35sp"
                 android:layout_weight="1"
                 android:layout_width="0dp"
@@ -143,7 +138,6 @@
                 android:id="@+id/arr6"
                 android:gravity="center"
                 android:textSize="35sp"
-                android:text="5"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
@@ -165,14 +159,13 @@
                 android:textSize="35sp"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:text="5"
+
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/arr8"
                 android:gravity="center"
                 android:textSize="35sp"
                 android:layout_weight="1"
-                android:text="5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
             <TextView
@@ -181,7 +174,6 @@
                 android:textSize="35sp"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:text="5"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
@@ -196,7 +188,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
             <TextView
-                android:text="5"
+
                 android:id="@+id/arr10"
                 android:gravity="center"
                 android:textSize="35sp"
@@ -206,7 +198,6 @@
             <TextView
                 android:id="@+id/arr11"
                 android:gravity="center"
-                android:text="5"
                 android:textSize="35sp"
                 android:layout_weight="1"
                 android:layout_width="0dp"
@@ -217,7 +208,6 @@
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:text="5"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
@@ -235,7 +225,6 @@
             <TextView
                 android:id="@+id/arr13"
                 android:gravity="center"
-                android:text="5"
                 android:textSize="35sp"
                 android:layout_weight="1"
                 android:layout_width="0dp"
@@ -246,7 +235,6 @@
                 android:textSize="35sp"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:text="5"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/arr15"
@@ -254,7 +242,6 @@
                 android:textSize="35sp"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:text="5"
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>

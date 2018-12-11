@@ -45,12 +45,29 @@
             android:layout_height="wrap_content"
             android:background="@drawable/topup"/>
     </LinearLayout>
-    <TextView
-        android:layout_marginLeft="150dp"
-        android:id="@+id/huanjing1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="40sp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="300dp"
+            android:id="@+id/huanjing1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"/>
+        <VideoView
+            android:id="@+id/viewvideo"
+            android:layout_marginLeft="50dp"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:visibility="invisible"/>
+        <TextView
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="450dp"
+            android:id="@+id/huanjing3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"/>
+    </RelativeLayout>
     <LinearLayout
         android:layout_marginLeft="100dp"
         android:layout_marginTop="100dp"
@@ -61,7 +78,7 @@
             android:textSize="40sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="空气环境："/>
+            android:text="光照强度："/>
         <Button
             android:id="@+id/guang"
             android:layout_marginLeft="600dp"
@@ -70,8 +87,15 @@
             android:background="@drawable/topup"/>
     </LinearLayout>
     <TextView
+        android:layout_marginTop="80dp"
         android:layout_marginLeft="150dp"
         android:id="@+id/huanjing2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"/>
+    <TextView
+        android:layout_marginLeft="500dp"
+        android:id="@+id/huanjing4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="40sp"/>

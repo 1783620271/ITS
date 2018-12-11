@@ -2,9 +2,16 @@ package com.acdt.cn.its.Utils;
 
 public  class ContantsValue {
 
-    public static  String IP;
+    private static  String IP;
 
-    public static final String HTTP = "http://192.168.1.101:8080/transportservice/type/jason/action/";
+    public static String getIP() {
+        return IP;
+    }
+
+    public static void setIP(String IP) {
+        ContantsValue.IP = IP;
+    }
+    public static  String HTTP = "http://192.168.1.101:8080/transportservice/type/jason/action/";
     public static final String HTTPGETALLSENSE = "GetAllSense.do";
     public static final String HTTPGETLIGHTSENSEVALVE = "GetLightSenseValve.do";
     public static final String HTTPGETCARSPEED = "GetCarSpeed.do";

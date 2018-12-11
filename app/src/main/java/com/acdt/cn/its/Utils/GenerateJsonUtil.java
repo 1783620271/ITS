@@ -63,7 +63,7 @@ public class GenerateJsonUtil {
         String jsonStr="{\"BusStationId\":"+BusStationId+"}";
         return jsonStr;
     }
-    public static String GenerateGetTrafficLightConfigAction(String TrafficLightId){
+    public static String GenerateGetTrafficLightConfigAction(Integer TrafficLightId){
         String jsonStr="{\"TrafficLightId\":"+TrafficLightId+"}";
         return jsonStr;
     }

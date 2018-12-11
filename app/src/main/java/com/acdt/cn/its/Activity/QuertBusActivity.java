@@ -2,6 +2,7 @@ package com.acdt.cn.its.Activity;
 
 import android.app.Activity;
 import android.app.Instrumentation;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -42,7 +43,7 @@ public class QuertBusActivity extends Activity {
                 case  DICTANCE1:
                     BusStation busStatio=busTionList1.getBusTionList().get(0);
                     Distancebus1.setText("1号公交："+busStatio.getDistance());
-                    BusStation busStati=busTionList.getBusTionList().get(1);
+                    BusStation busStati=busTionList1.getBusTionList().get(1);
                     Distancebus2.setText("2号公交："+busStati.getDistance());
                     break;
             }
@@ -56,7 +57,8 @@ public class QuertBusActivity extends Activity {
     private GetBusStation busTionList;
     private Button busButton2;
     private GetBusStation busTionList1;
-    private Button MyCarblack1;
+    private Button myCarblackkk;
+    private Button MyCarblack2;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -85,12 +87,10 @@ public class QuertBusActivity extends Activity {
                 intiDistance1();
             }
         });
-        MyCarblack1 = (Button) findViewById(R.id.MyCarblack1);
-        //点击按钮返回事件（物理返回）
-        MyCarblack1.setOnClickListener(new View.OnClickListener() {
+        MyCarblack2 = (Button) findViewById(R.id.MyCarblack2);
+        MyCarblack2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 new Thread() {
                     public void run() {
                         try {
@@ -102,7 +102,6 @@ public class QuertBusActivity extends Activity {
                     }
                 }.start();
             }
-
         });
     }
 
