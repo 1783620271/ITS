@@ -14,19 +14,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="40sp"
             android:text="排序规则："/>
-        <EditText
-            android:textSize="35sp"
-            android:gravity="center"
-            android:text="红灯升序"
+
+        <Spinner
             android:id="@+id/paixu"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textSize="35sp" />
         <Button
             android:id="@+id/ludengbutton"
             android:layout_width="wrap_content"
